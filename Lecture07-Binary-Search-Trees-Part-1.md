@@ -37,7 +37,7 @@ Let's suppose we want to find the value 30.  We'd start at 10, then move right s
 
 Let's define our classes for our nodes and binary search tree:
 ```js
-class BTNode { // Defines our Nodes
+class BSTNode { // Defines our Nodes
     constructor(value) {
         this.val = value; // Holds a value for this node
         this.left = null; // Points to nodes to the left of this one
@@ -45,25 +45,41 @@ class BTNode { // Defines our Nodes
     }
 }
 
-class BST { // Definition of our Binary Search Tree (BST)
+class BST {
     constructor() {
-        this.root = null; // Points to the topmost node in the tree - initially there is no node there
+        this.root = null; // Start with an empty tree
     }
 
-    // Add a node to the front of the list
-    addNodeToFront(value) {
-        var newNode = new SLLNode(value); // Create a new node
-        if (this.head == null) { // If the list was empty from before, put the new node at the start of the list, i.e. set the head to point to the new node
-            this.head = newNode;
+    /* Define methods belonging to the BST class here. */
+
+    addNode(val) {
+        var newNode = new BSTNode(val); // Define new node
+        // If the tree is empty, make this new node the root node
+        if (this.root == null) {
+            this.root = newNode;
             return this;
         }
-        // If we reach this point in the code, then We have at least one node in the list beforehand
-        newNode.next = this.head; // Connect the new node to the original list
-        this.head = newNode; // Makes the new node the first node in the list
+        var runner = this.root; // Runner pointing to the current node, starting at the root
+        // Loop to traverse the tree
+        while (runner != null) {
+            if (val > runner.val) { ;// If value is bigger than current node, move right
+                if (runner.right == null) { // If no node to the right, insert there
+                    runner.right = newNode;
+                    break; // No need to go further - we've added the node
+                } else { // Node already found to the right, so move runner
+                    runner = runner.right;
+                }
+            } else { // Otherwise, move left
+                if (runner.left == null) { // If no node to the left, insert there
+                    runner.left = newNode;
+                    break; // No need to go further - we've added the node
+                } else { // Node already found to the left, so move runner
+                    runner = runner.left;
+                }
+            }
+        }
         return this;
     }
-
-    // Insert other methods here, like adding a node, finding the tree's depth, size of tree, etc.
 }
 ```
 
