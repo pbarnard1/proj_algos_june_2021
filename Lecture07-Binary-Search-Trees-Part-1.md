@@ -66,3 +66,16 @@ class BST { // Definition of our Binary Search Tree (BST)
     // Insert other methods here, like adding a node, finding the tree's depth, size of tree, etc.
 }
 ```
+
+## Useful terms for BSTs:
+
+- Root: The topmost node in the tree
+- Height: The number of levels, or generations, in the tree
+- Leaf: A node with no children
+- Balanced tree: When the number nodes to the left of the root and the number of nodes to the right are equal or within one
+- Siblings: Nodes that have the same parent
+- Subtree: The smaller tree to the left/right of the current node
+- Pre-order traversal: Listing nodes in this order: root, left recursively, right recursively
+- In-order traversal: Listing nodes in this order: left recursively, root, right recursively
+- Post-order traversal: Listing nodes in this order: left recursively, right recursively, root
+- Breadth-first search, also called level order: list all nodes one level at a time before moving to the next level
